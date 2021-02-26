@@ -1,0 +1,96 @@
+<div class="outer">
+  <div class="container">
+
+    <mat-card class="search-card">
+      <mat-card-title class="todo-list-title">Todos</mat-card-title>
+      <mat-card-content fxLayout="column">
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <!-- Examples of filtering in Angular -->
+
+          <mat-form-field class="input-field">
+            <mat-label>Owner</mat-label>
+            <input (input)="getTodosFromServer()" matInput [(ngModel)]="owner" id="todo-owner-input" placeholder="Filter by name">
+            <mat-hint>Filtered on the server</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Category</mat-label>
+            <input (input)="update()" [(ngModel)]="category" matInput id="todo-category-input" placeholder="Filter by category">
+            <mat-hint>Filtered on client</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <!-- Examples of filtering on the server -->
+
+          <mat-form-field class="input-field">
+            <mat-label>Body</mat-label>
+            <input (input)="update()" [(ngModel)]="body" matInput id="todo-body-input" type="text" placeholder="Filter by body" min="0" max="200">
+            <mat-hint>Filtered on client</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="input-field">
+            <mat-label>Status</mat-label>
+            <mat-select (selectionChange)="update()" [(ngModel)]="status" id="todo-status-input" data-test="todoStatusSelect">
+              <mat-option>--</mat-option>
+              <mat-option value="complete">Complete</mat-option>
+              <mat-option value="incomplete">Incomplete</mat-option>
+            </mat-select>
+            <mat-hint>Filtered on client</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="10px">
+          <mat-form-field class="input-field">
+            <mat-label>Order by</mat-label>
+            <mat-select [(ngModel)]="sort" (selectionChange)="update()" >
+              <mat-option>--</mat-option>
+              <mat-option value="category">Category</mat-option>
+              <mat-option value="status">Status</mat-option>
+              <mat-option value="body">Body</mat-option>
+              <mat-option value="owner">Owner</mat-option>
+            </mat-select>
+            <mat-hint>Order by category</mat-hint>
+          </mat-form-field>
+          <mat-form-field class="input-field">
+            <mat-label>Limit</mat-label>
+            <input [(ngModel)]="limit" (input)="update()" matInput id="user-age-input" type="number" placeholder="Enter an amount here" min="0" max="200">
+            <mat-hint>Limit by number</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <br>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<div class="right">
+  <div class="todoList">
+    <app-todo-card *ngFor="let todo of filteredTodos" [todo]="todo"></app-todo-card>
+  </div>
+</div>
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <!-- Switch between card and list view based on the viewType variable, set above in the mar-radio-group -->
+    <div>
+
+
+
+      <!-- Maybe this should be a pop-up instead of just a text message? Not sure. -->
+      <ng-template #usersError>
+        <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10" class="user-error">
+          <mat-error>
+            There was a problem loading the todos. Possibly the server is down or perhaps there are network
+            issues.
+          </mat-error>
+          <mat-error>
+            Please wait a bit and try again or start the server.
+          </mat-error>
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+import { TodosListComponent } from './todos/todos-list/todos-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'users', component: UserListComponent},
   {path: 'users/new', component: AddUserComponent},
-  {path: 'users/:id', component: UserProfileComponent}
+  {path: 'users/:id', component: UserProfileComponent},
+  {path: 'todos', component: TodosListComponent},
 ];
 
 @NgModule({

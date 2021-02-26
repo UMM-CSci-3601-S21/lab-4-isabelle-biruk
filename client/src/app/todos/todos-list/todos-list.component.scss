@@ -1,0 +1,63 @@
+.body {
+  white-space: nowrap;
+  width: 200px;
+  font-size: large;
+  padding-left: 16px;
+  text-overflow: ellipsis;
+}
+
+.mat-card-actions {
+  padding-left: 5px;
+}
+
+.outer{
+  display: flex;
+}
+
+.todo-card p {
+  margin-left: 0px;
+  font-size: x-large;
+}
+
+.todo-card-status {
+  color: greenyellow;
+}
+
+.todoList {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.search-card {
+  position: fixed;
+}
+
+.container {
+  width: 300px;
+}
+
+.right {
+  flex: 1;
+  margin-left: 450px;
+}
+@media screen and (max-width: 1180px){
+  .outer{
+    flex-direction: column;
+  }
+  .right {
+    margin-left: 0px;
+  }
+  .search-card {
+    position: initial;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    width: 100%;
+  }
+  .todo-card{
+    width: 100%!important;
+    margin: 10px 0px 10px 0px;
+  }
+}
