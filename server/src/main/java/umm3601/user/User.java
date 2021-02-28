@@ -5,7 +5,7 @@ import org.mongojack.ObjectId;
 
 public class User {
 
-  @ObjectId @Id
+  // @ObjectId @Id
   public String _id;
 
   public String name;
