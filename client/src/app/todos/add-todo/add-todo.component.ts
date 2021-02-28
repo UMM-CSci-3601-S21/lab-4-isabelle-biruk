@@ -24,10 +24,9 @@ export class AddTodoComponent implements OnInit {
     ],
 
     category: [
-      {type: 'required', message: 'Age is required'},
-      {type: 'min', message: 'Category must be at least 2 characters long'},
-      {type: 'max', message: 'Category cannot be more than 50 characters long'},
-      {type: 'pattern', message: 'Age must be a whole number'}
+      {type: 'required', message: 'Category is required'},
+      {type: 'minlength', message: 'Category must be at least 2 characters long'},
+      {type: 'maxlength', message: 'Category cannot be more than 50 characters long'},
     ],
 
     status: [
@@ -37,8 +36,8 @@ export class AddTodoComponent implements OnInit {
 
     body: [
       { type: 'required', message: 'Body is required' },
-      {type: 'min', message: 'Body must be at least 2 characters long'},
-      {type: 'max', message: 'Body cannot be more than 200 characters long'},
+      {type: 'minlength', message: 'Body must be at least 2 characters long'},
+      {type: 'maxlength', message: 'Body cannot be more than 200 characters long'},
     ]
   };
 
@@ -59,7 +58,7 @@ export class AddTodoComponent implements OnInit {
       category: new FormControl('', Validators.compose([
         Validators.required,
         Validators.minLength(2),
-        Validators.max(50),
+        Validators.maxLength(101),
 
       ])),
 
