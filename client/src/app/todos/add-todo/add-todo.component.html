@@ -1,1 +1,66 @@
-<p>add-todo works!</p>
+<div fxLayout="row">
+  <div fxFlex fxFlex.gt-sm="80" fxFlexOffset.gt-sm="10">
+    <form [formGroup]="addTodoForm" (ngSubmit)="submitForm();">
+      <mat-card class="add-user-card container">
+        <mat-card-header style="margin: 0px;">
+          <mat-card-title class="add-todo-title">New todo</mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column">
+          <mat-form-field>
+            <mat-label>Owner</mat-label>
+            <input matInput placeholder="Owner" formControlName="owner" required>
+            <mat-error *ngFor="let validation of addTodoValidationMessages.owner">
+              <mat-error class="error-message" data-test="ownerError"
+                *ngIf="addTodoForm.get('owner').hasError(validation.type) && (addTodoForm.get('owner').dirty || addTodoForm.get('owner').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Category</mat-label>
+            <input matInput type="text" placeholder="Category" formControlName="category" required>
+            <mat-error *ngFor="let validation of addTodoValidationMessages.category">
+              <mat-error class="error-message" data-tSest="categoryError"
+                *ngIf="addTodoForm.get('category').hasError(validation.type) && (addTodoForm.get('category').dirty || addTodoForm.get('category').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Body</mat-label>
+            <input matInput type="text" placeholder="Body" formControlName="body" required>
+            <mat-error *ngFor="let validation of addTodoValidationMessages.body">
+              <mat-error class="error-message" data-test="bodyError"
+                *ngIf="addTodoForm.get('category').hasError(validation.type) && (addTodoForm.get('category').dirty || addTodoForm.get('category').touched)">
+                {{validation.message}}
+              </mat-error>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select required formControlName="status">
+              <mat-option value="complete">Complete</mat-option>
+              <mat-option value="incomplete">Incomplete</mat-option>
+            </mat-select>
+            <mat-error *ngIf="addTodoForm.get('status').hasError('required')">You must make a selection</mat-error>
+            <mat-error
+              *ngIf="addTodoForm.get('status').hasError('pattern') && !addTodoForm.get('status').hasError('required')">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button type="button" color="primary" [disabled]="!addTodoForm.valid" type="submit"
+            data-test="confirmAddUserButton">
+            ADD TODO
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+</div>

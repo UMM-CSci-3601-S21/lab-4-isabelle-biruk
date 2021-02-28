@@ -1,0 +1,25 @@
+.add-card{
+  padding: 40px;
+  width: 500px;
+}
+.container{
+  padding: 70px;
+  margin: 300px;
+}
+.form{
+  display: flex;
+  flex-direction: column;
+}
+.fab-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}
+@media screen and (max-width:1450px){
+  .container{
+    padding: 60px;
+    margin: 100px;
+  }
+}
