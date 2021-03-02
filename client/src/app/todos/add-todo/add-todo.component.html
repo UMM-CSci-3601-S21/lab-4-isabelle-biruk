@@ -33,7 +33,7 @@
             <input matInput type="text" placeholder="Body" formControlName="body" required>
             <mat-error *ngFor="let validation of addTodoValidationMessages.body">
               <mat-error class="error-message" data-test="bodyError"
-                *ngIf="addTodoForm.get('category').hasError(validation.type) && (addTodoForm.get('category').dirty || addTodoForm.get('category').touched)">
+                *ngIf="addTodoForm.get('body').hasError(validation.type) && (addTodoForm.get('body').dirty || addTodoForm.get('body').touched)">
                 {{validation.message}}
               </mat-error>
             </mat-error>
