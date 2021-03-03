@@ -121,7 +121,6 @@ public class TodoController {
       .check(todo -> todo.category != null && todo.category.length() > 0) // Verify that the Todo has a category is not blank
       .check(todo -> todo.status == false || todo.status == true) // Verify that the status is true or false
       .check(todo -> todo.body!= null && todo.body.length() > 0) // Verify that the Todo has a body that is not blank
-      .check(todo -> todo._id != null && todo._id.length() > 0) // Verify that the Todo has a company that is not blank
       .get();
 
 

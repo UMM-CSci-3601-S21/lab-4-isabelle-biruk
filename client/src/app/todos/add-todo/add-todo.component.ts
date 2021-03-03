@@ -18,26 +18,26 @@ export class AddTodoComponent implements OnInit {
 
   addTodoValidationMessages = {
     owner: [
-      {type: 'required', message: 'Owner is required'},
-      {type: 'minlength', message: 'Owner must be at least 2 characters long'},
-      {type: 'maxlength', message: 'Owner cannot be more than 50 characters long'},
+      { type: 'required', message: 'Owner is required' },
+      { type: 'minlength', message: 'Owner must be at least 2 characters long' },
+      { type: 'maxlength', message: 'Owner cannot be more than 50 characters long' },
     ],
 
     category: [
-      {type: 'required', message: 'Category is required'},
-      {type: 'minlength', message: 'Category must be at least 2 characters long'},
-      {type: 'maxlength', message: 'Category cannot be more than 50 characters long'},
+      { type: 'required', message: 'Category is required' },
+      { type: 'minlength', message: 'Category must be at least 2 characters long' },
+      { type: 'maxlength', message: 'Category cannot be more than 50 characters long' },
     ],
 
     status: [
-      {type: 'required', message: 'Status is required'},
-      {type: 'pattern', message: 'Status must be complete or incomplete'}
+      { type: 'required', message: 'Status is required' },
+      { type: 'pattern', message: 'Status must be complete or incomplete' }
     ],
 
     body: [
       { type: 'required', message: 'Body is required' },
-      {type: 'minlength', message: 'Body must be at least 2 characters long'},
-      {type: 'maxlength', message: 'Body cannot be more than 200 characters long'},
+      { type: 'minlength', message: 'Body must be at least 2 characters long' },
+      { type: 'maxlength', message: 'Body cannot be more than 200 characters long' },
     ]
   };
 
@@ -81,8 +81,17 @@ export class AddTodoComponent implements OnInit {
 
 
   submitForm() {
-    this.todoService.addTodo(this.addTodoForm.value).subscribe(newID => {
-      this.snackBar.open('Added Todo ' + this.addTodoForm.value.name, null, {
+    console.log(this.addTodoForm.value);
+    const { owner, body, status, category } = this.addTodoForm.value;
+
+    this.todoService.addTodo({
+      _id: undefined,
+      owner,
+      status: status !== undefined ? status === 'complete' : undefined,
+      body,
+      category
+    }).subscribe(newID => {
+      this.snackBar.open('Added Todo ' + this.addTodoForm.value.owner, null, {
         duration: 2000,
       });
       this.router.navigate(['/todos/', newID]);
@@ -90,6 +99,7 @@ export class AddTodoComponent implements OnInit {
       this.snackBar.open('Failed to add the Todo', 'OK', {
         duration: 5000,
       });
+      console.log(err);
     });
   }
 

@@ -10,14 +10,14 @@
 
           <mat-form-field class="input-field">
             <mat-label>Owner</mat-label>
-            <input (input)="getTodosFromServer()" matInput [(ngModel)]="owner" id="todo-owner-input"
+            <input data-test="todoOwnerInput" (input)="getTodosFromServer()" matInput [(ngModel)]="owner" id="todo-owner-input"
               placeholder="Filter by name">
             <mat-hint>Filtered on the database</mat-hint>
           </mat-form-field>
 
           <mat-form-field class="input-field">
             <mat-label>Category</mat-label>
-            <input (input)="update()" [(ngModel)]="category" matInput id="todo-category-input"
+            <input data-test="todoCategoryInput" (input)="update()" [(ngModel)]="category" matInput id="todo-category-input"
               placeholder="Filter by category">
             <mat-hint>Filtered on client</mat-hint>
           </mat-form-field>
@@ -28,7 +28,7 @@
 
           <mat-form-field class="input-field">
             <mat-label>Body</mat-label>
-            <input (input)="update()" [(ngModel)]="body" matInput id="todo-body-input" type="text"
+            <input data-test="todoBodyInput" (input)="update()" [(ngModel)]="body" matInput id="todo-body-input" type="text"
               placeholder="Filter by body" min="0" max="200">
             <mat-hint>Filtered on client</mat-hint>
           </mat-form-field>
@@ -69,7 +69,7 @@
 
         <div class="fab-container">
           <a routerLink="/todos/new">
-            <button mat-fab color="primary" aria-label="Add a todo">
+            <button data-test="addTodoButton" mat-fab color="primary" aria-label="Add a todo">
               <mat-icon>add</mat-icon>
             </button>
           </a>
@@ -80,7 +80,7 @@
   </div>
 </div>
 <div class="right">
-  <div class="todoList">
+  <div class="todoList todo-cards-container">
     <app-todo-card *ngFor="let todo of filteredTodos" [todo]="todo"></app-todo-card>
   </div>
 </div>
