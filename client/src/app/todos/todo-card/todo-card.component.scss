@@ -1,0 +1,63 @@
+.todo-card {
+  margin-bottom: 20px;
+}
+
+.body {
+  width: 250px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 16px;
+  font-size: larger;
+}
+.todo-card{
+  width: 280px;
+  margin: 10px;
+  transition-duration: 600ms;
+}
+.todo-card:hover{
+  background-color: rgba(0, 0, 0, 0.055);
+}
+.btn{
+  margin-left: 8px!important;
+}
+.completed{
+  background-color: rgba(50, 205, 50, 0.131);
+}
+.incomplete{
+  background-color: rgba(255, 0, 0, 0.137);
+}
+.red-text{
+  color: rgb(255, 91, 91)!important;
+}
+.green-text{
+  color: limegreen!important;
+}
+.mat-card-title{
+  margin-bottom: 0px;
+}
+span{
+  padding: 4px 8px 4px 8px;
+  border-radius: 4px;
+  width: 70px;
+  margin: 5px 0px 5px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: right;
+}
+mat-card-header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+mat-card-header > div{
+  flex: 1;
+  align-items: flex-end;
+  justify-content: right;
+}
+h4{
+  margin: 0px;
+}
